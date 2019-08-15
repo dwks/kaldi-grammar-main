@@ -1,9 +1,6 @@
-# _all.py: main rule for DWK's grammar
+# _all.py: main rule for kaldi-grammar-simple grammar
 
-try:
-    from aenea import *
-except:
-    from dragonfly import *
+from dragonfly import *
 
 import keyboard
 import words
@@ -53,7 +50,5 @@ def unload():
     grammar = None
 
 if __name__ == '__main__':
-    engine = get_engine("voxhub")
     #engine.list_available_microphones()
-    #engine.dump_grammar()
-    engine.connect()
+    execfile('kaldi_module_loader_plus.py')
