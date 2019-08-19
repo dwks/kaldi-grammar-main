@@ -56,7 +56,7 @@ specialCharMap = {
     "underscore": "_",
     "(star|asterisk)": "*",
     "colon": ":",
-    "(semicolon|semi-colon)": ";",
+    "(semicolon|semi colon)": ";",
     #"at": "@",
     "location": "@",
     "[double] quote": '"',
@@ -296,7 +296,7 @@ grammarCfg.cmd.map = Item(
         "double escape": Key("escape, escape"),  # Exiting menus.
         # Punctuation and separation characters, for quick editing.
         "colon [<n>]": Key("colon/2:%(n)d"),
-        "semi-colon [<n>]": Key("semicolon/2:%(n)d"),
+        "(semicolon|semi colon) [<n>]": Key("semicolon/2:%(n)d"),
         "comma [<n>]": Key("comma/2:%(n)d"),
         #"(dot|period|dit|point)": Key("dot"),  # cannot be followed by a repeat count
         "(period|point)": Key("dot"),  # cannot be followed by a repeat count
