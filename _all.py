@@ -2,13 +2,20 @@
 
 from dragonfly import *
 
+import mode
 import keyboard
 import words
 import programs
 
 release = Key("shift:up, ctrl:up, alt:up")
 
+class GlobalCommandRule(MappingRule):
+    mapping = {
+        "release mode":  Function(lambda: mode.MultiMode.deactivate_all()),
+    }
+
 alternatives = []
+alternatives.append(RuleRef(rule=GlobalCommandRule()))
 alternatives.append(RuleRef(rule=keyboard.KeystrokeRule()))
 alternatives.append(RuleRef(rule=words.FormatRule()))
 alternatives.append(RuleRef(rule=words.ReFormatRule()))
