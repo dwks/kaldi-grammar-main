@@ -19,3 +19,6 @@ Different extensions vary slightly in their particulars, but most major extensib
 * **[Fish shell](https://fishshell.com/):** Shell that is non-POSIX but has many big quality-of-life improvements, particularly its autocompletion engine, which is great for voice. Works not only on Linux, but also well enough on Windows in an MSYS2 environment, even if you only use normal Windows tools.
 
 * **[fzf](https://github.com/junegunn/fzf) fuzzy finder for the command-line:** Handy for many tasks, especially integrated with your shell history to easily and quickly find any previous command. Type something once, why type it again?
+
+* **Random articles**
+    * [Avoiding the productivity mouse-traps](https://medium.com/productivity-freak/avoiding-productivity-mousetraps-177d80fa533b)
