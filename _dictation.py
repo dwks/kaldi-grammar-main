@@ -35,11 +35,21 @@ class DictationCommandRule(MappingRule):
     # defaults = { "n": 1 }
 grammar.add_rule(DictationCommandRule())
 
+# ADD PERSONAL SINGLE-WORD TERMS HERE...
+personal_uni_terms = "Kaldi backend parsing cache optimize software"
+# ADD PERSONAL MULTIPLE-WORD TERMS HERE...
+personal_multi_terms = ["left and right", "up and down"]
+
 class DictationTerminologyRule(MappingRule):
     mapping = {
-        "kaldi": Text("Kaldi "),
+        # "kaldi": Text("Kaldi "),
+        "<term>": Text("%(term)s "),
     }
+    extras = [
+        Choice("term", { t.lower(): t for t in (personal_uni_terms.split() + personal_multi_terms) }),
+    ]
     exported = False
+    # weight = 2
 
 class FormattedDictationRule(MappingRule):
     mapping = {
@@ -47,6 +57,7 @@ class FormattedDictationRule(MappingRule):
     }
     extras = [ Dictation("dictation") ]
     exported = False
+    # weight = 0.5
 
 class SequenceRule(CompoundRule):
     spec = "<dict_cmd_sequence>"
@@ -55,7 +66,6 @@ class SequenceRule(CompoundRule):
             RuleRef(FormattedDictationRule()),
             RuleRef(DictationTerminologyRule()),
         ]), min=1, max=16, name="dict_cmd_sequence"),
-        # RuleRef(FormattedDictationRule(), name='dict_cmd_sequence'),
     ]
     context = FuncContext(lambda: dictation_mode)
     def _process_recognition(self, node, extras):
