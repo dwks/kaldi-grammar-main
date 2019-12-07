@@ -16,6 +16,7 @@ finds.
 from __future__ import print_function
 import os.path
 import logging
+import sys
 
 from dragonfly import RecognitionObserver, get_engine
 from dragonfly import Grammar, MappingRule, Function, Dictation, FuncContext
@@ -113,7 +114,7 @@ class Observer(RecognitionObserver):
 # --------------------------------------------------------------------------
 # Main event driving loop.
 
-def main():
+def main(args):
     logging.basicConfig(level=logging.INFO)
 
     try:
@@ -138,6 +139,12 @@ def main():
         # cloud_dictation=None,  # set to 'gcloud' to use cloud dictation
     )
 
+    if len(args) >= 1 and args[0] == "-l":
+        # Show the list of attached microphone devices.
+        # Note that this code should only be called after the engine has been initialized above with configuration options,
+        # otherwise if this line of code happens before the engine is created, get_engine will create the engine with default arguments.
+        get_engine("kaldi").print_mic_list()
+
     # Call connect() now that the engine configuration is set.
     engine.connect()
 
@@ -160,4 +167,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
