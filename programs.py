@@ -42,7 +42,7 @@ class ProgramsRule(MappingRule):
 
         "vim open source": Text(":vs %<.c\n"),
         "vim open source plus": Text(":vs %<.cpp\n"),
-        "vim open header": Text(":vs %<.h\n") + Key('c-w, c-w'),
+        "vim open header": Text(":vs %%<.h\n") + Key('c-w, c-w'),
         "vim next [tab] [<n>]": Text(':tabnext +%(n)d\n'),
         "vim previous [tab] [<n>]": Text(':tabprevious %(n)d\n'),
         "vim (switch|toggle|swap)": Key('c-w, c-w'),

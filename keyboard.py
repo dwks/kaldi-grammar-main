@@ -48,9 +48,9 @@ def cancel_and_sleep(text=None, text2=None):
 
 # For repeating of characters.
 specialCharMap = {
-    "(bar|vertical bar|pipe)": "|",
+    "(vertical bar|pipe)": "|",
     "(dash|minus|hyphen)": "-",
-    "dit": ".",
+    #"dit": ".",
     "comma": ",",
     "backslash": "\\",
     "underscore": "_",
@@ -122,22 +122,22 @@ singleModifierMap = {
 }
 
 letterMap = {
-    "(alpha|arch)": "a",
-    "(bravo|brav) ": "b",
-    "(charlie|turley|char) ": "c",
-    "(delta|del) ": "d",
-    "(echo|every) ": "e",
+    "(arch)": "a",
+    "(bravo) ": "b",
+    "(charlie|char) ": "c",
+    "(delta) ": "d",
+    "(every) ": "e",
     "(foxtrot|fox) ": "f",
-    "(golf|gang) ": "g",
+    "(golf) ": "g",
     "(hotel) ": "h",
-    "(india|indigo) ": "i",
-    "(juliet|julia) ": "j",
+    "(india) ": "i",
+    "(julia) ": "j",
     "(kilo) ": "k",
-    "(lima|line) ": "l",
+    "(line) ": "l",
     "(mike) ": "m",
     "(november|noy) ": "n",
-    "(Oscar|osh) ": "o",
-    "(papa|poppa) ": "p",
+    "(Oscar) ": "o",
+    "(papa) ": "p",
     "(quebec|queen) ": "q",
     "(romeo) ": "r",
     "(sierra) ": "s",
@@ -304,6 +304,7 @@ grammarCfg.cmd.map = Item(
         "underscore [<n>]": Key("underscore/2:%(n)d"),
         "<letters>": Text("%(letters)s"),
         "<char>": Text("%(char)s"),
+        "choose <letters>": Text("%(letters)s") + Key("f"),
 
         'langle [<n>]': Key('langle:%(n)d'),
         'lace [<n>]':   Key('lbrace:%(n)d'),
