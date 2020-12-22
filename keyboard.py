@@ -253,8 +253,8 @@ grammarCfg.cmd.map = Item(
         #"down <n> (page|pages)": Key("pgdown:%(n)d"),
         #"left <n> (word|words)": Key("c-left/3:%(n)d/10"),
         #"right <n> (word|words)": Key("c-right/3:%(n)d/10"),
-        "home": Key("home"),
-        "end": Key("end"),
+        #"home": Key("home"),
+        #"end": Key("end"),
         "doc home": Key("c-home/3"),
         "doc end": Key("c-end/3"),
         # Functional keys.
