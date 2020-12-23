@@ -18,7 +18,7 @@ lastFormatRuleLength = 0
 lastFormatRuleWords = []
 def handle_word(text):
     words = str(text).split()
-    print 'word (', words, ')'
+    print('word (', words, ')')
     if len(words) > 0:
         Text(words[0]).execute()
 
@@ -36,7 +36,7 @@ class NopeFormatRule(CompoundRule):
 
     def value(self, node):
         global lastFormatRuleLength
-        print "erasing previous format of length", lastFormatRuleLength
+        print("erasing previous format of length", lastFormatRuleLength)
         return Key('backspace:' + str(lastFormatRuleLength))
 
 class ReFormatRule(CompoundRule):
@@ -47,7 +47,7 @@ class ReFormatRule(CompoundRule):
         global lastFormatRuleWords
         words = lastFormatRuleWords
         words = node.words()[2:] + lastFormatRuleWords
-        print words
+        print(words)
 
         uppercase = words[0] == 'upper'
         lowercase = words[0] != 'natural'
@@ -76,7 +76,7 @@ class FormatRule(CompoundRule):
 
     def value(self, node):
         words = node.words()
-        print "format rule:", words
+        print("format rule:", words)
 
         uppercase = words[0] == 'upper'
         lowercase = words[0] != 'natural'
@@ -106,7 +106,7 @@ class FormatRule(CompoundRule):
         lastFormatRuleLength = len(formatted)
 
         # empty formatted causes problems here
-        print "  ->", formatted
+        print("  ->", formatted)
         if bomb != None:
             return Text(formatted) + Mimic(' '.join(bomb))
         else:
@@ -118,7 +118,7 @@ class PhraseFormatRule(CompoundRule):
 
     def value(self, node):
         words = node.words()
-        print "format rule:", words
+        print("format rule:", words)
 
         leading = (words[0] != 'start')
         trailing = False #(words[0] != 'end' and words[0] != 'isolated')
@@ -149,6 +149,6 @@ class PhraseFormatRule(CompoundRule):
         global lastFormatRuleLength
         lastFormatRuleLength = len(formatted)
 
-        print "  ->", formatted
+        print("  ->", formatted)
         return Text(formatted)
 
