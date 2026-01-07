@@ -3,9 +3,9 @@
 from dragonfly import *
 
 import mode
-import keyboard
+#import keyboard
 import words
-import programs
+#import programs
 
 release = Key("shift:up, ctrl:up, alt:up")
 
