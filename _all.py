@@ -16,37 +16,53 @@ class GlobalCommandRule(MappingRule):
 
 alternatives = []
 alternatives.append(RuleRef(rule=GlobalCommandRule()))
-alternatives.append(RuleRef(rule=keyboard.KeystrokeRule()))
-alternatives.append(RuleRef(rule=words.FormatRule()))
-alternatives.append(RuleRef(rule=words.ReFormatRule()))
-alternatives.append(RuleRef(rule=words.NopeFormatRule()))
-alternatives.append(RuleRef(rule=words.PhraseFormatRule()))
-alternatives.append(RuleRef(rule=programs.ProgramsRule()))
+#alternatives.append(RuleRef(rule=keyboard.KeystrokeRule()))
+alternatives.append(RuleRef(rule=words.DictationRule()))
+#alternatives.append(RuleRef(rule=words.FormatRule()))
+#alternatives.append(RuleRef(rule=words.ReFormatRule()))
+#alternatives.append(RuleRef(rule=words.NopeFormatRule()))
+#alternatives.append(RuleRef(rule=words.PhraseFormatRule()))
 root_action = Alternative(alternatives)
 
-sequence = Repetition(root_action, min=1, max=16, name="sequence")
+#sequence = Repetition(root_action, min=1, max=16, name="sequence")
+#
+#class RepeatRule(CompoundRule):
+#    # Here we define this rule's spoken-form and special elements.
+#    spec = "<sequence> [[[and] repeat [that]] <n> times]"
+#    extras = [
+#        sequence,  # Sequence of actions defined above.
+#        IntegerRef("n", 1, 100),  # Times to repeat the sequence.
+#    ]
+#    defaults = {
+#        "n": 1,  # Default repeat count.
+#    }
+#
+#    def _process_recognition(self, node, extras):  # @UnusedVariable
+#        sequence = extras["sequence"]  # A sequence of actions.
+#        count = extras["n"]  # An integer repeat count.
+#        for i in range(count):  # @UnusedVariable
+#            for action in sequence:
+#                action.execute()
+#            release.execute()
+
+sequence = Repetition(root_action, min=1, max=2, name="sequence")
 
 class RepeatRule(CompoundRule):
     # Here we define this rule's spoken-form and special elements.
-    spec = "<sequence> [[[and] repeat [that]] <n> times]"
+    spec = "<sequence>"
     extras = [
         sequence,  # Sequence of actions defined above.
-        IntegerRef("n", 1, 100),  # Times to repeat the sequence.
     ]
-    defaults = {
-        "n": 1,  # Default repeat count.
-    }
 
     def _process_recognition(self, node, extras):  # @UnusedVariable
         sequence = extras["sequence"]  # A sequence of actions.
-        count = extras["n"]  # An integer repeat count.
-        for i in range(count):  # @UnusedVariable
-            for action in sequence:
-                action.execute()
-            release.execute()
+        for action in sequence:
+            action.execute()
+        release.execute()
 
 grammar = Grammar("root rule")
 grammar.add_rule(RepeatRule())  # Add the top-level rule.
+#grammar.add_rule(root_action)  # Add the top-level rule.
 grammar.load()  # Load the grammar.
 
 def unload():

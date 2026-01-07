@@ -103,6 +103,7 @@ class ProgramsRule(MappingRule):
         'standard map': Text('std::map'),
         'standard list': Text('std::list'),
         'const': Text('const '),
+        'hazy': Text(' '),
     }
     extras = [
         Dictation("text"),

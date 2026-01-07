@@ -132,9 +132,9 @@ def main(args):
         #model_dir='kaldi_model_zamia',
         #model_dir='kaldi_model',
         #model_dir='kaldi_model_daanzu_20200905_1ep-ftdwk.100w.5ep',
-        #model_dir='kaldi_model_daanzu_20200905_1ep-biglm',
+        model_dir='kaldi_model_daanzu_20200905_1ep-biglm',
         #model_dir='kaldi_model_dwk',
-        model_dir='kaldi_model_daanzu_20200905_1ep-smalllm',
+        #model_dir='kaldi_model_daanzu_20200905_1ep-smalllm',
         # tmp_dir='kaldi_tmp',  # default for temporary directory
         # vad_aggressiveness=3,  # default aggressiveness of VAD
         # vad_padding_start_ms=300,  # default ms of required silence before VAD

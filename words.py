@@ -68,6 +68,18 @@ class ReFormatRule(CompoundRule):
         lastFormatRuleLength = len(formatted)
         return Text(formatted)
 
+class DictationRule(CompoundRule):
+    spec = ('<dictation>')
+    extras = [Dictation(name='dictation')]
+    exported = False
+
+    def value(self, node):
+        words = node.words()
+        print("dictation:", words)
+
+        formatted = tformat.format_natword(words)
+        return Text(formatted)
+
 class FormatRule(CompoundRule):
     spec = ('[upper | natural] ( proper | camel | rel-path | abs-path | score | sentence | '
             'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative) [<dictation>] [bomb]')
